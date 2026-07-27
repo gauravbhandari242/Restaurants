@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { HiPlus, HiMinus, HiOutlineShoppingBag } from 'react-icons/hi'
+import { FaInstagram } from 'react-icons/fa'
 import { useCart } from '../context/CartContext'
 import { menuItems, services, subscriptions } from '../data/menuData'
 import heroImg from '../assets/images/hero.png'
@@ -229,6 +230,103 @@ function Home() {
                 Learn More
               </Link>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Connect on Social Media */}
+      <section className="section social-section" id="social-section">
+        <div className="container-wide">
+          <motion.div
+            className="social-section__header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <h2 className="social-section__title">Connect on Social Media</h2>
+          </motion.div>
+
+          <div className="social-section__grid">
+            <motion.div
+              className="social-section__item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80"
+                alt="Chef in kitchen"
+                className="social-section__img"
+              />
+              <div className="social-section__overlay">
+                <FaInstagram size={32} />
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="social-section__item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+                alt="Dining ambiance"
+                className="social-section__img"
+              />
+              <div className="social-section__overlay">
+                <FaInstagram size={32} />
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="social-section__item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=800&q=80"
+                alt="Chefs plating dishes"
+                className="social-section__img"
+              />
+              <div className="social-section__overlay">
+                <FaInstagram size={32} />
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="social-section__item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80"
+                alt="Host welcoming guests"
+                className="social-section__img"
+              />
+              <div className="social-section__overlay">
+                <FaInstagram size={32} />
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="social-section__action">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-dark social-section__follow-btn"
+              id="social-follow-btn"
+            >
+              FOLLOW
+            </a>
           </div>
         </div>
       </section>
