@@ -13,6 +13,7 @@ import Services from './pages/Services'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Login from './From/login'
+import Social from './pages/Social'
 
 // New Dedicated Footer Pages
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -43,6 +44,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/social" element={<Social />} />
             <Route path="/login" element={<Login />} />
 
             {/* Dedicated Footer Component Pages */}
