@@ -1,0 +1,533 @@
+/* ===== Hero ===== */
+.hero {
+  padding-top: 80px;
+}
+
+.hero__image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.hero__image {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  display: block;
+}
+
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  bottom: 0;
+  background: var(--overlay);
+}
+
+.hero__title {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  color: var(--text-white);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 0 2rem;
+}
+
+/* ===== Featured Plates ===== */
+.featured {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.featured__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+
+.featured__title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 400;
+}
+
+.featured__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* --- Card Design --- */
+.featured__card {
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.featured__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.featured__card-img {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  position: relative;
+}
+
+.featured__card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.featured__card:hover .featured__card-img img {
+  transform: scale(1.08);
+}
+
+/* Image overlay with description on hover */
+.featured__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.featured__card:hover .featured__card-overlay {
+  opacity: 1;
+}
+
+.featured__card-desc {
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.featured__card-info {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.featured__card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.featured__card-name {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.featured__card-category {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  background: var(--bg-light);
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.featured__card-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.featured__card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.qty-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  color: var(--text-dark);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:hover {
+  background: var(--bg-light);
+}
+
+.qty-value {
+  width: 30px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn-sm {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.65rem;
+}
+
+.featured__add-btn {
+  flex: 1;
+  border-radius: 8px;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+/* ===== Hospitality Services ===== */
+.services-section {
+  background-color: var(--bg-primary);
+}
+
+.services-section__title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.services-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.services-section__card {
+  padding: 0;
+}
+
+.services-section__card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.services-section__card-desc {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.services-section__card-link {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.services-section__card-link:hover {
+  opacity: 0.6;
+}
+
+/* ===== Subscriptions ===== */
+.subscriptions {
+  background-color: var(--bg-primary);
+}
+
+.subscriptions__title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.subscriptions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.subscriptions__card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.subscriptions__card-title {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.subscriptions__card-price {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.subscriptions__card-price span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.subscriptions__card-desc {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.subscriptions__card-btn {
+  width: 100%;
+}
+
+/* ===== Culinary Philosophy ===== */
+.philosophy {
+  background-color: var(--bg-primary);
+}
+
+.philosophy__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+.philosophy__image {
+  overflow: hidden;
+}
+
+.philosophy__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 450px;
+}
+
+.philosophy__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 3rem;
+  background-color: var(--bg-primary);
+}
+
+.philosophy__title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.philosophy__text {
+  font-size: 1rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+/* ===== General Inquiries ===== */
+.inquiries {
+  background-color: var(--bg-primary);
+  padding-bottom: 3rem;
+}
+
+.inquiries__title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.inquiries__subtitle {
+  font-size: 1rem;
+  color: var(--text-body);
+  margin-bottom: 1.75rem;
+  max-width: 600px;
+}
+
+.inquiries__form {
+  max-width: 700px;
+}
+
+/* ===== Responsive - Tablet ===== */
+@media (max-width: 1024px) {
+  .featured__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .services-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .subscriptions__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .philosophy__content {
+    padding: 2.5rem 2rem;
+  }
+
+  .philosophy__image img {
+    min-height: 350px;
+  }
+}
+
+/* ===== Responsive - Mobile ===== */
+@media (max-width: 768px) {
+  .hero__image-wrapper {
+    padding: 0 1rem;
+  }
+
+  .featured__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .featured__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .featured__card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+  }
+
+  .featured__card-img {
+    aspect-ratio: 16 / 9;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .featured__card-overlay {
+    display: none;
+  }
+
+  .featured__card-info {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .featured__card-top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .featured__card-category {
+    align-self: auto;
+  }
+
+  .featured__card-price {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured__card-actions {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .featured__add-btn {
+    flex: 1;
+    width: auto;
+  }
+
+  .services-section__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .subscriptions__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .philosophy__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy__image img {
+    min-height: 250px;
+    height: 250px;
+  }
+
+  .philosophy__content {
+    padding: 2rem 1.25rem;
+  }
+
+  .hero__image {
+    height: 350px;
+  }
+
+  .hero__title {
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+    white-space: normal;
+    width: 90%;
+  }
+}
+
+/* ===== Responsive - Small Mobile ===== */
+@media (max-width: 480px) {
+  .hero__image-wrapper {
+    padding: 0 0.5rem;
+  }
+
+  .hero__image {
+    height: 260px;
+    border-radius: 8px;
+  }
+
+  .hero__title {
+    font-size: 1.4rem;
+    width: 95%;
+  }
+
+  .featured__card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .qty-selector {
+    justify-content: center;
+  }
+
+  .subscriptions__card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .philosophy__image img {
+    height: 200px;
+    min-height: 200px;
+  }
+}
