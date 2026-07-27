@@ -190,12 +190,19 @@ function Home() {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.1 } },
                 }}
               >
-                <h3 className="subscriptions__card-title">{sub.title}</h3>
-                <p className="subscriptions__card-price">
-                  ₹{sub.price.toFixed(2)} <span>/ {sub.period}</span>
-                </p>
-                <p className="subscriptions__card-desc">{sub.description}</p>
-                <button className="btn btn-outline subscriptions__card-btn">Sign up</button>
+                {sub.image && (
+                  <div className="subscriptions__card-img">
+                    <img src={sub.image} alt={sub.title} />
+                  </div>
+                )}
+                <div className="subscriptions__card-body">
+                  <h3 className="subscriptions__card-title">{sub.title}</h3>
+                  <p className="subscriptions__card-price">
+                    ₹{sub.price.toFixed(2)} <span>/ {sub.period}</span>
+                  </p>
+                  <p className="subscriptions__card-desc">{sub.description}</p>
+                  <button className="btn btn-dark subscriptions__card-btn">Sign up</button>
+                </div>
               </motion.div>
             ))}
           </div>

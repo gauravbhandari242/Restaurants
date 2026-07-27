@@ -59,6 +59,26 @@ export const menuItems = [
     image: chickenImg,
     description: 'Golden crispy fried chicken pieces with our secret blend of herbs and spices.',
   },
+  {
+    id: 7,
+    name: 'House BBQ Ribs',
+    price: 28.00,
+    category: 'Mains',
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+    description: 'Slow-cooked tender pork ribs glazed in our smoky house-made barbecue sauce.',
+    featured: true,
+  },
+  {
+    id: 8,
+    name: 'Deli Reuben Sandwich',
+    price: 12.80,
+    originalPrice: 16.00,
+    onSale: true,
+    category: 'Sandwiches',
+    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80',
+    description: 'Corned beef, Swiss cheese, sauerkraut, and Russian dressing grilled on rye bread.',
+    featured: true,
+  },
 ]
 
 export const services = [
@@ -112,6 +132,7 @@ export const subscriptions = [
     title: 'Silver Subscription',
     price: 499.00,
     period: 'month',
+    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80',
     description: 'Access to monthly recipe collections, seasonal ingredient guides, and early booking for special dining events.',
   },
   {
@@ -119,6 +140,7 @@ export const subscriptions = [
     title: 'Gold Subscription',
     price: 999.00,
     period: 'month',
+    image: 'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=800&q=80',
     description: 'Everything in Silver plus live virtual cooking classes, exclusive chef interviews, and priority reservations at all locations.',
   },
   {
@@ -126,6 +148,7 @@ export const subscriptions = [
     title: 'Platinum Subscription',
     price: 1999.00,
     period: 'month',
+    image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80',
     description: 'Full access to all content, private one-on-one sessions with our head chef, complimentary monthly tasting menu, and VIP event invitations.',
   },
 ]

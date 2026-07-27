@@ -271,40 +271,74 @@
 .subscriptions__card {
   background: var(--bg-white);
   border: 1px solid var(--border-light);
-  padding: 2.5rem 2rem;
-  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.subscriptions__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.subscriptions__card-img {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.subscriptions__card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.subscriptions__card:hover .subscriptions__card-img img {
+  transform: scale(1.05);
+}
+
+.subscriptions__card-body {
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .subscriptions__card-title {
-  font-family: var(--font-body);
-  font-size: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
 }
 
 .subscriptions__card-price {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
 }
 
 .subscriptions__card-price span {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--text-muted);
 }
 
 .subscriptions__card-desc {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-body);
-  line-height: 1.7;
-  margin-bottom: 2rem;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+  flex: 1;
 }
 
 .subscriptions__card-btn {
   width: 100%;
+  border-radius: 50px;
 }
 
 /* ===== Culinary Philosophy ===== */
