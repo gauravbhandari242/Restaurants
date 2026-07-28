@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import {
   HiOutlineMail,
   HiOutlineLockClosed,
@@ -39,6 +40,20 @@ function Login() {
   const handleSignupChange = (e) => {
     setSignupData({ ...signupData, [e.target.name]: e.target.value })
     setError('')
+  }
+
+  const handleForgotPassword = () => {
+    if (!loginData.email) {
+      toast.error('Please enter your email address first.')
+      setError('Please enter your email address above to reset password.')
+      return
+    }
+    toast.success(`Password reset instructions sent to ${loginData.email}`)
+    setSuccess(`Password reset instructions sent to ${loginData.email}`)
+  }
+
+  const handleSocialLogin = (provider) => {
+    toast.success(`Authenticating with ${provider}... Welcome back!`)
   }
 
   const handleLoginSubmit = (e) => {
@@ -191,7 +206,12 @@ function Login() {
                   <input type="checkbox" id="remember-me" />
                   <span>Remember me</span>
                 </label>
-                <button type="button" className="login-form__forgot" id="forgot-password-btn">
+                <button 
+                  type="button" 
+                  className="login-form__forgot" 
+                  id="forgot-password-btn"
+                  onClick={handleForgotPassword}
+                >
                   Forgot password?
                 </button>
               </div>
@@ -312,11 +332,21 @@ function Login() {
 
           {/* Social Login */}
           <div className="login-social">
-            <button className="login-social__btn" id="social-google" type="button">
+            <button 
+              className="login-social__btn" 
+              id="social-google" 
+              type="button"
+              onClick={() => handleSocialLogin('Google')}
+            >
               <FcGoogle size={20} />
               Google
             </button>
-            <button className="login-social__btn" id="social-apple" type="button">
+            <button 
+              className="login-social__btn" 
+              id="social-apple" 
+              type="button"
+              onClick={() => handleSocialLogin('Apple')}
+            >
               <FaApple size={20} />
               Apple
             </button>

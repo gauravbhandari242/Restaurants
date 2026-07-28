@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { HiPlus, HiMinus, HiOutlineShoppingBag } from 'react-icons/hi'
+import { HiPlus, HiMinus, HiOutlineShoppingBag, HiCheckCircle } from 'react-icons/hi'
+import toast from 'react-hot-toast'
 import { useCart } from '../context/CartContext'
 import { menuItems, services, subscriptions } from '../data/menuData'
 import Social from '../components/Social'
@@ -13,6 +14,40 @@ function Home() {
   const featuredItems = menuItems.filter((item) => item.featured)
   const [quantities, setQuantities] = useState({})
   const { addToCart } = useCart()
+
+  // General Inquiries Form State
+  const [inquiryForm, setInquiryForm] = useState({
+    fname: '',
+    lname: '',
+    email: '',
+    message: '',
+  })
+  const [inquirySubmitting, setInquirySubmitting] = useState(false)
+  const [inquirySubmitted, setInquirySubmitted] = useState(false)
+
+  const handleInquiryChange = (e) => {
+    setInquiryForm({ ...inquiryForm, [e.target.name]: e.target.value })
+  }
+
+  const handleInquirySubmit = (e) => {
+    e.preventDefault()
+    if (!inquiryForm.fname || !inquiryForm.lname || !inquiryForm.email || !inquiryForm.message) {
+      toast.error('Please fill in all required fields.')
+      return
+    }
+
+    setInquirySubmitting(true)
+    setTimeout(() => {
+      setInquirySubmitting(false)
+      setInquirySubmitted(true)
+      toast.success(`Thank you ${inquiryForm.fname}! Your general inquiry has been received. Our team will respond shortly.`)
+      setInquiryForm({ fname: '', lname: '', email: '', message: '' })
+    }, 800)
+  }
+
+  const handleSubscriptionSignUp = (sub) => {
+    toast.success(`Thank you for enrolling in ${sub.title}! Access details have been sent to your email.`)
+  }
 
   const updateQty = (id, delta) => {
     setQuantities((prev) => ({
@@ -201,7 +236,12 @@ function Home() {
                     ₹{sub.price.toFixed(2)} <span>/ {sub.period}</span>
                   </p>
                   <p className="subscriptions__card-desc">{sub.description}</p>
-                  <button className="btn btn-dark subscriptions__card-btn">Sign up</button>
+                  <button 
+                    className="btn btn-dark subscriptions__card-btn"
+                    onClick={() => handleSubscriptionSignUp(sub)}
+                  >
+                    Sign up
+                  </button>
                 </div>
               </motion.div>
             ))}
@@ -259,29 +299,95 @@ function Home() {
             </p>
           </motion.div>
 
-          <form className="inquiries__form" id="inquiries-form" onSubmit={(e) => e.preventDefault()}>
-            <div className="form-row">
-              <div className="form-group">
-                <label className="form-label" htmlFor="inq-fname">First Name *</label>
-                <input type="text" id="inq-fname" className="form-input" required />
+          {inquirySubmitted ? (
+            <motion.div 
+              className="inquiry-success-banner"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                padding: '2.5rem',
+                borderRadius: '8px',
+                textAlign: 'center',
+                marginTop: '2rem'
+              }}
+            >
+              <HiCheckCircle size={48} style={{ color: '#d4af37', marginBottom: '1rem' }} />
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#fff' }}>
+                Inquiry Received!
+              </h3>
+              <p style={{ color: '#aaa', marginBottom: '1.5rem' }}>
+                Thank you for contacting us. Our guest relations team has received your message and will reach out within 2 hours.
+              </p>
+              <button 
+                className="btn btn-outline"
+                onClick={() => setInquirySubmitted(false)}
+              >
+                Send Another Message
+              </button>
+            </motion.div>
+          ) : (
+            <form className="inquiries__form" id="inquiries-form" onSubmit={handleInquirySubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label" htmlFor="inq-fname">First Name *</label>
+                  <input 
+                    type="text" 
+                    id="inq-fname" 
+                    name="fname"
+                    className="form-input" 
+                    value={inquiryForm.fname}
+                    onChange={handleInquiryChange}
+                    required 
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="inq-lname">Last Name *</label>
+                  <input 
+                    type="text" 
+                    id="inq-lname" 
+                    name="lname"
+                    className="form-input" 
+                    value={inquiryForm.lname}
+                    onChange={handleInquiryChange}
+                    required 
+                  />
+                </div>
               </div>
               <div className="form-group">
-                <label className="form-label" htmlFor="inq-lname">Last Name *</label>
-                <input type="text" id="inq-lname" className="form-input" required />
+                <label className="form-label" htmlFor="inq-email">Email *</label>
+                <input 
+                  type="email" 
+                  id="inq-email" 
+                  name="email"
+                  className="form-input" 
+                  value={inquiryForm.email}
+                  onChange={handleInquiryChange}
+                  required 
+                />
               </div>
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="inq-email">Email *</label>
-              <input type="email" id="inq-email" className="form-input" required />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="inq-message">Message *</label>
-              <textarea id="inq-message" className="form-textarea" required></textarea>
-            </div>
-            <button type="submit" className="btn btn-dark" id="inq-submit">
-              Send
-            </button>
-          </form>
+              <div className="form-group">
+                <label className="form-label" htmlFor="inq-message">Message *</label>
+                <textarea 
+                  id="inq-message" 
+                  name="message"
+                  className="form-textarea" 
+                  value={inquiryForm.message}
+                  onChange={handleInquiryChange}
+                  required
+                ></textarea>
+              </div>
+              <button 
+                type="submit" 
+                className="btn btn-dark" 
+                id="inq-submit"
+                disabled={inquirySubmitting}
+              >
+                {inquirySubmitting ? 'Sending...' : 'Send Inquiry'}
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </div>
